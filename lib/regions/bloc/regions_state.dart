@@ -1,7 +1,7 @@
 part of 'regions_bloc.dart';
 
 @immutable
-class RegionsState {
+class RegionsState extends Equatable {
   const RegionsState({
     this.countries = const [],
     this.states = const [],
@@ -43,4 +43,16 @@ class RegionsState {
       selectedState: selectedState ?? this.selectedState,
     );
   }
+
+  @override
+  List<Object?> get props => [
+        countries,
+        states,
+        cities,
+        isCountriesLoading,
+        isStatesLoading,
+        isCitiesLoading,
+        selectedCountry,
+        selectedState,
+      ];
 }

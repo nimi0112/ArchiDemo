@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
+
 class RegionStatesResponse {
   final bool error;
   final String msg;
@@ -63,7 +65,7 @@ class Data {
       };
 }
 
-class RegionState {
+class RegionState extends Equatable {
   final String name;
   final String stateCode;
 
@@ -86,4 +88,7 @@ class RegionState {
         "name": name,
         "state_code": stateCode,
       };
+
+  @override
+  List<Object> get props => [name, stateCode];
 }
