@@ -1,0 +1,17 @@
+name: regions_data
+description: Dart package which manages the api calls in the app
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: "^3.3.0"
+
+dependencies:
+  dio: ^5.5.0+1
+  intl: ^0.19.0
+  dartz: ^0.10.1
+
+
+dev_dependencies:
+  mocktail: ^1.0.3
+  test: ^1.25.2
