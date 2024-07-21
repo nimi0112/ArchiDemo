@@ -1,4 +1,3 @@
-import 'package:arch_demo/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
 import '../../regions/view/regions_page.dart';
@@ -15,8 +14,6 @@ class App extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
       home: const RegionsPage(),
     );
   }

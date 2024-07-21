@@ -31,6 +31,8 @@ class RegionsBloc extends Bloc<RegionsEvent, RegionsState> {
         isCountriesLoading: true,
         cities: const [],
         states: const [],
+        selectedState: '',
+        selectedCountry: '',
       ),
     );
     final result = await apiProvider.getCountriesList();
@@ -46,6 +48,8 @@ class RegionsBloc extends Bloc<RegionsEvent, RegionsState> {
             countries: success,
             cities: const [],
             states: const [],
+            selectedState: '',
+            selectedCountry: '',
           );
         },
       ),
@@ -54,7 +58,14 @@ class RegionsBloc extends Bloc<RegionsEvent, RegionsState> {
 
   FutureOr<void> _getStatesList(
       GetStatesList event, Emitter<RegionsState> emit) async {
-    emit(state.copyWith(isStatesLoading: true));
+    emit(
+      state.copyWith(
+        isStatesLoading: true,
+        selectedCountry: event.countryName,
+        states: const [],
+        cities: const [],
+      ),
+    );
     final result = await apiProvider.getStatesList(event.countryName);
     emit(
       result.fold(
@@ -81,7 +92,7 @@ class RegionsBloc extends Bloc<RegionsEvent, RegionsState> {
     GetCitiesList event,
     Emitter<RegionsState> emit,
   ) async {
-    emit(state.copyWith(isCitiesLoading: true));
+    emit(state.copyWith(isCitiesLoading: true,cities: const []));
     final result = await apiProvider.getCitiesList(
       state.selectedCountry!,
       event.stateName,
